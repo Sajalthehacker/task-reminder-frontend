@@ -97,13 +97,22 @@ form{
     color: #232836;
 }
 
-.form a{
+.form {
     color: #0171d3;
     text-decoration: none;
 }
 
 .form-content a:hover{
     text-decoration: underline;
+}
+
+#forgot-password{
+    color: #0171d3;
+}
+
+#forgot-password:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .line{

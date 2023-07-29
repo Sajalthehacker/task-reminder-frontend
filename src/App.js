@@ -4,15 +4,17 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import Verify from './Components/Verify/Verify';
 import Home from './Components/Home/Home';
+import Forgot from './Components/ForgotPassword/Forgot';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/register' element={<SignUp />}/>
-        <Route path='/verify' element={<Verify />}/>
-        <Route path='/home' element={<Home />}/>
+        <Route path='/' element={<Login />} />
+        <Route path='/register' element={<SignUp />} />
+        <Route path='/verify' element={<Verify />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/reset-link' element={<Forgot />} />
       </Routes>
     </div>
   );

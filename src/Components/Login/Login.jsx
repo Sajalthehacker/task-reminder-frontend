@@ -16,35 +16,41 @@ const Login = () => {
         setShowPassword(!showPassword)
     }
 
-    const submitHandler = async(e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
 
-        try{
-            const { response } = await axios.post('http://localhost:5000/api/user/login', {
+        try {
+            const { data } = await axios.post('http://localhost:5000/api/user/login', {
                 email: email,
                 password: password
             })
 
-            if(response.status === "EMPTY_CREDENTIALS"){
-                alert(response.message)
+            if (data.status === "EMPTY_CREDENTIALS") {
+                alert(data.message)
             }
 
-            else if(response.status === "NO_ACCOUNT_EXISTS"){
-                alert(response.message)
+            if (data.status === "NO_ACCOUNT_EXISTS") {
+                alert(data.message)
             }
 
-            else if(response.status === "PASSWORD_NOT_MATCHED"){
-                alert(response.message)
+            if (data.status === "PASSWORD_NOT_MATCHED") {
+                alert(data.message)
             }
-    
-            else if(response.status === "LOGIN_SUCCESSFULL"){
+
+            if (data.status === "LOGIN_SUCCESSFULL") {
+                alert('login success')
                 navigate('/home');
             }
-    
+
         }
-        catch(error){
-            alert("Internal server error ", error.message)
+        catch (error) {
+            alert(error.message)
         }
+    }
+
+    const forgotHandler = (e) => {
+        e.preventDefault()
+        navigate('/reset-link')
     }
 
     return (
@@ -56,16 +62,16 @@ const Login = () => {
                         <div className="field input-field">
                             <input type="email" placeholder="Email" className="input" value={email} onChange={(e) => {
                                 setEmail(e.target.value)
-                            }}  required/>
+                            }} required />
                         </div>
                         <div className="field input-field">
                             <input type={(showPassword) ? "password" : "text"} placeholder="Password" className="password" value={password} onChange={(e) => {
                                 setPassword(e.target.value)
-                            }} required/>
+                            }} required />
                             <i className={`bx ${iconState} eye-icon`} onClick={eyeIconHandler}></i>
                         </div>
                         <div className="form-link">
-                            <a href="home" className="forgot-pass">Forgot password?</a>
+                            <span onClick={forgotHandler} id="forgot-password">Forgot password?</span>
                         </div>
                         <div className="field button-field">
                             <button onClick={submitHandler}>Login</button>

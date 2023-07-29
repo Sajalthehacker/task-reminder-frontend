@@ -28,7 +28,7 @@ const SignUp = () => {
         setShowConfirmPassword(!showConfirmPassword)
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async(e) => {
         e.preventDefault()
 
         if(password !== confirmPassword){
@@ -36,24 +36,24 @@ const SignUp = () => {
         }
 
         try {
-            const {response} = axios.post('http://localhost:5000/api/user/register', {
+            const {data} = await axios.post('http://localhost:5000/api/user/register', {
                 name: name,
                 email: email,
                 password: password
             })
 
-            if(response.status === "EMPTY_CREDENTIALS"){
-                alert(response.message)
+            if(data.status === "EMPTY_CREDENTIALS"){
+                alert(data.message)
             }
 
-            else if(response.status === "REGISTRATION_SUCCESSFUL"){
+            else if(data.status === "REGISTRATION_SUCCESSFUL"){
                 alert('account created successfully')
                 navigate('/verify')
             }
 
-            else if(response.status === 'EMAIL_ALREADY_EXISTS'){
-                alert(response.message)
-                navigate('/login')
+            else if(data.status === 'EMAIL_ALREADY_EXISTS'){
+                alert(data.message)
+                navigate('/')
             }
         } 
         catch (error) {
@@ -94,7 +94,7 @@ const SignUp = () => {
                         </div>
                     </form>
                     <div className="form-link">
-                        <span>Already have an account? <a href="/login" className="link login-link">Login</a></span>
+                        <span>Already have an account? <a href="/" className="link login-link">Login</a></span>
                     </div>
                 </div>
                 <div className="line"></div>
