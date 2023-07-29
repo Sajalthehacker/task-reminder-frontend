@@ -4,10 +4,11 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setEmailStore, setIsEmailVerifiedStore, setIsLoggedInStore, setNameStore, setTokenStore } from '../../Redux/Actions/Action'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const Login = () => {
-    // const myStore = useSelector((store) => store.userReducer)
-
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
@@ -32,7 +33,7 @@ const Login = () => {
             })
 
             if (data.status === "LOGIN_SUCCESSFULL") {
-                alert('login success')
+                NotificationManager.success('Login Successful', 'Success');
                 dispatch(setNameStore(data.name))
                 dispatch(setEmailStore(data.email))
                 dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
@@ -97,6 +98,7 @@ const Login = () => {
                     </a>
                 </div>
             </div>
+            <NotificationContainer/>
         </div>
     )
 }
