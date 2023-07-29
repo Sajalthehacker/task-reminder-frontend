@@ -5,6 +5,9 @@ import SignUp from './Components/SignUp/SignUp';
 import Verify from './Components/Verify/Verify';
 import Home from './Components/Home/Home';
 import Forgot from './Components/ForgotPassword/Forgot';
+import store from './Redux/Store/Store';
+
+store.subscribe(() => {console.log(store.getState())})
 
 function App() {
   return (

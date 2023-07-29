@@ -2,11 +2,16 @@ import React, { useState } from 'react'
 import './Verify.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { setEmailStore, setIsEmailVerifiedStore, setIsLoggedInStore, setNameStore } from '../../Redux/Actions/Action'
 
 const Verify = () => {
+    const myStore = useSelector((store) => store.userReducer)
+
+    const dispatch = useDispatch()
     const [otp, setOtp] = useState("")
     const navigate = useNavigate()
-    const email = ""
+    const email = myStore.Email
 
     const submitHandler = async (e) => {
         e.preventDefault()
@@ -31,6 +36,10 @@ const Verify = () => {
 
             else if (data.status === "VERIFICATION_SUCCESSFULL") {
                 alert(data.message)
+                dispatch(setNameStore(data.data.name))
+                dispatch(setEmailStore(data.data.email))
+                dispatch(setIsEmailVerifiedStore(data.data.isEmailVerified))
+                dispatch(setIsLoggedInStore(data.data.isLoggedIn))
                 navigate('/home')
             }
 

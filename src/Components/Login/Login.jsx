@@ -2,8 +2,14 @@ import React, { useState } from 'react'
 import './Login.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setEmailStore, setIsEmailVerifiedStore, setIsLoggedInStore, setNameStore, setTokenStore } from '../../Redux/Actions/Action'
 
 const Login = () => {
+    // const myStore = useSelector((store) => store.userReducer)
+
+    const dispatch = useDispatch()
+
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,26 +31,22 @@ const Login = () => {
                 password: password
             })
 
-            if (data.status === "EMPTY_CREDENTIALS") {
-                alert(data.message)
-            }
-
-            if (data.status === "NO_ACCOUNT_EXISTS") {
-                alert(data.message)
-            }
-
-            if (data.status === "PASSWORD_NOT_MATCHED") {
-                alert(data.message)
-            }
-
             if (data.status === "LOGIN_SUCCESSFULL") {
                 alert('login success')
+                dispatch(setNameStore(data.name))
+                dispatch(setEmailStore(data.email))
+                dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
+                dispatch(setIsLoggedInStore(data.isLoggedIn))
+                dispatch(setTokenStore(data.token))
                 navigate('/home');
             }
 
+            else{
+                alert(data.message)
+            }
         }
         catch (error) {
-            alert(error.message)
+            console.error(error)
         }
     }
 

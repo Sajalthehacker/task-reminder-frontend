@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import './SignUp.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setEmailStore, setIsEmailVerifiedStore, setIsLoggedInStore, setNameStore } from '../../Redux/Actions/Action'
 
 const SignUp = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -48,6 +51,10 @@ const SignUp = () => {
 
             else if(data.status === "REGISTRATION_SUCCESSFUL"){
                 alert('account created successfully')
+                dispatch(setNameStore(data.name))
+                dispatch(setEmailStore(data.email))
+                dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
+                dispatch(setIsLoggedInStore(data.isLoggedIn))
                 navigate('/verify')
             }
 
