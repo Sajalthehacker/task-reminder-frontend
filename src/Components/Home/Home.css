@@ -18,6 +18,13 @@
     background: linear-gradient(to bottom right, rgb(255, 253, 125), rgb(151, 250, 184), rgb(253, 209, 158))
 }
 
+.homepage>:nth-child(1){
+    color:#1877f2;
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+}
+
 .homepage_header {
     margin: 2rem;
     margin-top: 7rem;

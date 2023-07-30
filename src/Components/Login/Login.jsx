@@ -4,9 +4,6 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setEmailStore, setIsEmailVerifiedStore, setIsLoggedInStore, setNameStore, setTokenStore } from '../../Redux/Actions/Action'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -33,7 +30,7 @@ const Login = () => {
             })
 
             if (data.status === "LOGIN_SUCCESSFULL") {
-                NotificationManager.success('Login Successful', 'Success');
+                alert('login successfully')
                 dispatch(setNameStore(data.name))
                 dispatch(setEmailStore(data.email))
                 dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
@@ -53,7 +50,7 @@ const Login = () => {
 
     const forgotHandler = (e) => {
         e.preventDefault()
-        navigate('/reset-link')
+        navigate('/forgot-password')
     }
 
     return (
@@ -86,19 +83,18 @@ const Login = () => {
                 </div>
                 <div className="line"></div>
                 <div className="media-options">
-                    <a href="home" className="field facebook">
+                    <a href="/" className="field facebook">
                         <i className='bx bxl-facebook facebook-icon'></i>
                         <span>Login with Facebook</span>
                     </a>
                 </div>
                 <div className="media-options">
-                    <a href="home" className="field google">
+                    <a href="/" className="field google">
                         <img src="#" alt="" className="google-img" />
                         <span>Login with Google</span>
                     </a>
                 </div>
             </div>
-            <NotificationContainer/>
         </div>
     )
 }

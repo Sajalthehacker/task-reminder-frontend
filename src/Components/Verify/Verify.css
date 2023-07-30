@@ -55,4 +55,5 @@ button:hover{
 .resend-link>span:hover{
     text-decoration: underline;
     cursor: pointer;
+    color: #000000;
 }

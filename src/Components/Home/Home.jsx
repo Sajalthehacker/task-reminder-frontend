@@ -72,6 +72,7 @@ const Home = () => {
     return (
         <div className='homepage-container'>
             <div className="homepage">
+                <h1>Welcome {`${myStore.Name}`}</h1>
                 <button className='log-out-btn' onClick={logOutHandler}>Log Out</button>
                 <div className="homepage_header">
                     <h1>Remind Me 🙋‍♂️</h1>

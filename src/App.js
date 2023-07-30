@@ -6,18 +6,26 @@ import Verify from './Components/Verify/Verify';
 import Home from './Components/Home/Home';
 import Forgot from './Components/ForgotPassword/Forgot';
 import store from './Redux/Store/Store';
+import { useSelector } from 'react-redux';
+import ResetPassword from './Components/ForgotPassword/ResetPassword';
 
 store.subscribe(() => {console.log(store.getState())})
 
 function App() {
+  const myStore = useSelector((store) => store.userReducer)
+
+  const isEmailV = myStore.isEmailVerified
+  const isLoginV = myStore.isLoggedIn
+
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<SignUp />} />
         <Route path='/verify' element={<Verify />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/reset-link' element={<Forgot />} />
+        <Route path='/home' element={(isEmailV && isLoginV ? <Home /> : <SignUp />)  } />
+        <Route path='/forgot-password' element={<Forgot />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
       </Routes>
     </div>
   );

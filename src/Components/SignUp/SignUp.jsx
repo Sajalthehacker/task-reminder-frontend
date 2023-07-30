@@ -4,8 +4,6 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setEmailStore, setIsEmailVerifiedStore, setIsLoggedInStore, setNameStore } from '../../Redux/Actions/Action'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -52,9 +50,7 @@ const SignUp = () => {
             }
 
             else if(data.status === "REGISTRATION_SUCCESSFUL"){
-                toast.success('Account Created SuccessFully', {
-                    position: toast.POSITION.TOP_RIGHT
-                })
+                alert("Account Created Successfully")
                 dispatch(setNameStore(data.name))
                 dispatch(setEmailStore(data.email))
                 dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
@@ -110,19 +106,17 @@ const SignUp = () => {
                 </div>
                 <div className="line"></div>
                 <div className="media-options">
-                    <a href="home" className="field facebook">
+                    <a href="/" className="field facebook">
                         <i className='bx bxl-facebook facebook-icon'></i>
                         <span>Login with Facebook</span>
                     </a>
                 </div>
                 <div className="media-options">
-                    <a href="home" className="field google">
+                    <a href="/" className="field google">
                         <img src="#" alt="" className="google-img" />
                         <span>Login with Google</span>
                     </a>
                 </div>
-
-                <ToastContainer />
             </div>
         </div>
     )

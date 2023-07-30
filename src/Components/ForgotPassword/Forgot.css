@@ -19,7 +19,7 @@ h1{
     color: white;
 }
 
-.email-input {
+.email-input, .otp-input {
     width: 24rem;
     height: 3rem;
     padding: 1.5rem;
@@ -27,6 +27,22 @@ h1{
     border-radius: 7px;
 }
 
-.reset-btn{
+.reset-btn, .login-btn{
     border-radius: 10px;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.btn-container{
+    display: flex;
+    gap: 1rem;
+}
+
+#resend-otp{
+    color: #0171d3;
+}
+
+#resend-otp:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
