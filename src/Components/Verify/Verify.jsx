@@ -20,7 +20,7 @@ const Verify = () => {
         }
 
         try {
-            const { data } = await axios.post('http://localhost:5000/api/user/verifyEmail', {
+            const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/verifyEmail`, {
                 email: email,
                 otp: otp
             })
@@ -53,7 +53,7 @@ const Verify = () => {
         e.preventDefault()
         
         try {
-            const {data} = await axios.post('http://localhost:5000/api/user/resendOtp', {
+            const {data} = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/resendOtp`, {
                 email: email
             })
 

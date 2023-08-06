@@ -39,7 +39,7 @@ const SignUp = () => {
         }
 
         try {
-            const {data} = await axios.post('http://localhost:5000/api/user/register', {
+            const {data} = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/register`, {
                 name: name,
                 email: email,
                 password: password

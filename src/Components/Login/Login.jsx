@@ -24,7 +24,7 @@ const Login = () => {
         e.preventDefault()
 
         try {
-            const { data } = await axios.post('http://localhost:5000/api/user/login', {
+            const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/login`, {
                 email: email,
                 password: password
             })
@@ -39,7 +39,7 @@ const Login = () => {
                 navigate('/home');
             }
 
-            else{
+            else {
                 alert(data.message)
             }
         }

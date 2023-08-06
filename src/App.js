@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import ResetPassword from './Components/ForgotPassword/ResetPassword';
 
 store.subscribe(() => {console.log(store.getState())})
+console.log(process.env.REACT_APP_SERVER)
 
 function App() {
   const myStore = useSelector((store) => store.userReducer)
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<SignUp />} />

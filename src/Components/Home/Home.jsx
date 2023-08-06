@@ -19,7 +19,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const { data } = await axios.post("http://localhost:5000/api/reminder/getAllReminders", {
+            const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/reminder/getAllReminders`, {
                 email: email
             })
 
@@ -34,7 +34,7 @@ const Home = () => {
     }, [email]);
 
     const addReminder = async () => {
-        const { data } = await axios.post("http://localhost:5000/api/reminder/addReminders", { reminderMsg, remindAt, email })
+        const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/reminder/addReminders`, { reminderMsg, remindAt, email })
 
         if (data.status === "SUCCESSFULLY_FETCHED") {
             setReminderList(data.message)
@@ -47,7 +47,7 @@ const Home = () => {
     };
 
     const deleteReminder = async (id, email) => {
-        const { data } = await axios.post("http://localhost:5000/api/reminder/deleteReminders", { id, email })
+        const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/reminder/deleteReminders`, { id, email })
 
         if (data.status === "SUCCESSFULLY_FETCHED") {
             setReminderList(data.message)

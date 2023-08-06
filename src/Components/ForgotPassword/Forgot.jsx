@@ -15,7 +15,7 @@ const Forgot = () => {
   const submitHandler = async (e) => {
     e.preventDefault()
 
-    const { data } = await axios.post('http://localhost:5000/api/user/forgot-password', {
+    const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/forgot-password`, {
       email: email
     })
 
@@ -34,7 +34,7 @@ const Forgot = () => {
     }
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/user/verifyEmailReset', {
+      const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/verifyEmailReset`, {
         email: email,
         otp: otp
       })
@@ -62,7 +62,7 @@ const Forgot = () => {
   const resendHandler = async(e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post('http://localhost:5000/api/user/resendOtp', {
+      const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/resendOtp`, {
         email: email
       })
 

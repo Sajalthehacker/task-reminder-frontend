@@ -19,7 +19,7 @@ const ResetPassword = () => {
             return alert('password and confirm password must be same')
         }
 
-        const {data} = await axios.post('http://localhost:5000/api/user/reset-password', {
+        const {data} = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/reset-password`, {
             email: email,
             password: password
         })
