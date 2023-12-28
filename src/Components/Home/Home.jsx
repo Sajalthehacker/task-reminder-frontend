@@ -25,7 +25,7 @@ const Home = () => {
             setReminderList(data.message)
         }
         else {
-            console.log(data.message)
+            alert(data.message)
         }
     }
     useEffect(() => {
@@ -33,7 +33,7 @@ const Home = () => {
             fetchReminder();
         }
     }, [])
-    
+
     // useEffect(() => {
     //     if(email){
     //         fetchData1()

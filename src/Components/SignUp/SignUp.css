@@ -65,15 +65,16 @@ form{
     border-bottom-width: 2px;
 }
 
-.eye-icon{
+i {
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 25px;
     transform: translateY(-50%);
     font-size: 18px;
     color: #8b8b8b;
     cursor: pointer;
-    padding: 5px;
+    padding: 10px;
+    z-index: 1000;
 }
 
 .field button{

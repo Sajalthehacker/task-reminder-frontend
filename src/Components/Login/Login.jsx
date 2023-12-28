@@ -75,7 +75,7 @@ const Login = () => {
                             <input type={(showPassword) ? "password" : "text"} placeholder="Password" className="password" value={password} onChange={(e) => {
                                 setPassword(e.target.value)
                             }} required />
-                            <i className={`bx ${iconState} eye-icon`} onClick={eyeIconHandler}></i>
+                            <i className={`bx ${iconState}`} onClick={eyeIconHandler} id="eye-icon"></i>
                         </div>
                         <div className="form-link">
                             <span onClick={forgotHandler} id="forgot-password">Forgot password?</span>
