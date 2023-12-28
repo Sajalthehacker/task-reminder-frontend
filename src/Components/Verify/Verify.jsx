@@ -38,6 +38,7 @@ const Verify = () => {
                 alert(data.message)
                 dispatch(setNameStore(data.data.name))
                 dispatch(setEmailStore(data.data.email))
+                localStorage.setItem('email', data.data.email)
                 dispatch(setIsEmailVerifiedStore(data.data.isEmailVerified))
                 dispatch(setIsLoggedInStore(data.data.isLoggedIn))
                 navigate('/home')

@@ -14,6 +14,10 @@ const Login = () => {
     const [iconState, setIconState] = useState('bx-show')
     const [showPassword, setShowPassword] = useState(true)
 
+    if(localStorage.getItem('email')){
+        navigate('/home')
+    }
+
     const eyeIconHandler = (e) => {
         e.preventDefault()
         setIconState(iconState === 'bx-show' ? 'bx-hide' : 'bx-show')
@@ -36,6 +40,9 @@ const Login = () => {
                 dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
                 dispatch(setIsLoggedInStore(data.isLoggedIn))
                 dispatch(setTokenStore(data.token))
+                localStorage.setItem('email', data.email);
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('name', data.name);
                 navigate('/home');
             }
 
