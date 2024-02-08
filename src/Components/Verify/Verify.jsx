@@ -41,6 +41,8 @@ const Verify = () => {
                 localStorage.setItem('email', data.data.email)
                 dispatch(setIsEmailVerifiedStore(data.data.isEmailVerified))
                 dispatch(setIsLoggedInStore(data.data.isLoggedIn))
+                localStorage.setItem('EV', data.isEmailVerified);
+                localStorage.setItem('LV', data.isLoggedIn);
                 navigate('/home')
             }
 

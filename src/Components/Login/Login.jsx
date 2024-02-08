@@ -40,9 +40,12 @@ const Login = () => {
                 dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
                 dispatch(setIsLoggedInStore(data.isLoggedIn))
                 dispatch(setTokenStore(data.token))
+                console.log(data.isEmailVerified, data.isLoggedIn);
                 localStorage.setItem('email', data.email);
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('name', data.name);
+                localStorage.setItem('EV', data.isEmailVerified);
+                localStorage.setItem('LV', data.isLoggedIn);
                 navigate('/home');
             }
 

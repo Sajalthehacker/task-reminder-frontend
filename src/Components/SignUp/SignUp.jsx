@@ -56,6 +56,9 @@ const SignUp = () => {
                 dispatch(setIsEmailVerifiedStore(data.isEmailVerified))
                 dispatch(setIsLoggedInStore(data.isLoggedIn))
                 localStorage.setItem('name', data.name);
+                localStorage.setItem('email', data.email);
+                localStorage.setItem('EV', data.isEmailVerified);
+                localStorage.setItem('LV', data.isLoggedIn);
                 navigate('/verify')
             }
 
